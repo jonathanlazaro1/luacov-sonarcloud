@@ -2,7 +2,7 @@
 
 local function show_help() print([[
 Usage:
-   luacov-cobertura [-c FILE] [-o FILE]
+   luacov-sonarcloud [-c FILE] [-o FILE]
 
 optional arguments:
   -h                    show this help message and exit
@@ -13,7 +13,7 @@ optional arguments:
 local arg = { ... }
 
 local runner = require("luacov.runner")
-local reporter = require("luacov.reporter.cobertura")
+local reporter = require("luacov.reporter.sonarcloud")
 
 --- From: http://lua-users.org/wiki/AlternativeGetOpt
 -- getopt, POSIX style command line argument parser
@@ -62,7 +62,7 @@ function getopt( arg, options )
 end
 
 
-local args = {}
+local args = { output = "sonarcloud-report.xml" }
 
 local options = getopt( arg, "co" )
 for key,value in pairs(options) do
@@ -80,6 +80,6 @@ end
 -- will load configfile specified, or defaults otherwise
 local configuration = runner.load_config(args.config)
 configuration.reportfile = args.output or configuration.reportfile
-configuration.cobertura = configuration.cobertura or {}
+configuration.sonarcloud = configuration.sonarcloud or {}
 
 reporter.report()

@@ -1,0 +1,26 @@
+package = "luacov-sonarcloud"
+version = "1.0.0-1"
+source = {
+  url = "https://github.com/jonathanlazaro1/luacov-sonarcloud",
+  tag = "v1.0.0"
+}
+description = {
+  summary = "LuaCov to SonarCloud report generator",
+  license = "MIT "
+}
+dependencies = {
+  "lua >= 5.1",
+  "luacov >= 0.6-1",
+  "xml2lua >= 1.6-2"
+}
+build = {
+  type = "builtin",
+  modules = {
+    ["luacov.reporter.sonarcloud"] = "luacov/reporter/sonarcloud.lua"
+  },
+  install = {
+      bin = {
+        ['luacov-sonarcloud'] = 'bin/luacov-sonarcloud'
+      }
+    }
+}

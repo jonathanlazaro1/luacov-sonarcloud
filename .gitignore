@@ -1,0 +1,12 @@
+LuaCov output files
+**/luacov.*.out
+
+# LuaRocks build files
+*.src.rock
+*.zip
+*.tar.gz
+*.all.rock
+*.rockspec
+
+# XML files (probably for testing)
+*.xml

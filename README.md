@@ -1,16 +1,15 @@
-luacov-cobertura
-================
+# luacov-sonarcloud
 
-LuaCov to Cobertura report generator
+LuaCov to SonarCloud generic report generator, inspired on (and forked from) [luacov-cobertura](https://github.com/britzl/luacov-cobertura). The current output report format is extracted from [here](https://docs.sonarsource.com/sonarcloud/enriching/test-coverage/generic-test-data/).
 
 ## Usage
 
- * Run tests with enabled [LuaCov](https://github.com/keplerproject/luacov)
- * Run `luacov-cobertura`
+- Run `luacov-sonarcloud`
 
 ### Command line arguments
+
 ```
-luacov-cobertura [-h] [-c FILE] [-o FILE]
+luacov-sonarcloud [-h] [-c FILE] [-o FILE]
 
 optional arguments:
   -h            show this help message and exit
@@ -18,15 +17,16 @@ optional arguments:
   -o FILE       output file
 ```
 
-### Cobertura specific configuration
+### SonarCloud specific configuration
 
-The configuration file may contain a cobertura.filenameparser function that can be used to manipulate the filenames in the stat file:
+The configuration file may contain a sonarcloud.filenameparser function that can be used to manipulate the filenames in the stat file:
+
 ```
 local configuration = {
 	-- standard luacov configuration keys and values here
 	statsfile = "foobar",
 
-	cobertura = {
+	sonarcloud = {
 		-- this function will be called for each filename in the stats file
 		-- the function may be used to manipulate the path before the file is
 		-- processed by the report generator
